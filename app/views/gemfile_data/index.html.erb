@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+
+<head>
+  <%= stylesheet_link_tag "gemfile_data.css" %>
+  <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.jqueryui.min.js"></script>
+</head>
+
+<table id="gemfileDataTable" class="display" cellspacing="0" width="100%">
+  <thead>
+  <tr>
+    <th>Project Name</th>
+    <th>Gem Name    </th>
+    <th>Gem Version </th>
+  </tr>
+  </thead>
+  <tfoot>
+  <tr>
+    <th>Project Name</th>
+    <th>Gem Name    </th>
+    <th>Gem Version </th>
+  </tr>
+  </tfoot>
+</table>
+
+
+<script type="text/javascript">
+
+  function drawRow(rowData) {
+    var row = $("<tr />")
+    $("#gemfileDataTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+    row.append($("<td>" + rowData.repo_name   + "</td>"));
+    row.append($("<td>" + rowData.gem_name    + "</td>"));
+    row.append($("<td>" + rowData.gem_version + "</td>"));
+  }
+
+  function drawTable(data) {
+      for (var i = 0; i < data.length; i++) {
+          drawRow(data[i]);
+      }
+  }
+  $(document).ready(function() {
+    $('#gemfileDataTable').DataTable();
+  } );
+
+  drawTable(<%= @data %>)
+
+
+</script>
+

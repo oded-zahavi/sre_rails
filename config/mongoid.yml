@@ -1,0 +1,32 @@
+development:
+  clients:
+    default:
+      hosts:
+        - <%= ENV.fetch("VBOX_IP", "127.0.0.1") %>:27017
+      database: fiverr_sre
+    cluster1:
+      hosts:
+        - <%= ENV.fetch("VBOX_IP", "127.0.0.1") %>:27017
+      database: fiverr_sre
+
+staging:
+  clients:
+    default:
+      hosts:
+        - <%= ENV.fetch("VBOX_IP", "127.0.0.1") %>:27017
+      database: fiverr_sre
+    cluster1:
+      hosts:
+        - <%= ENV.fetch("VBOX_IP", "127.0.0.1") %>:27017
+      database: fiverr_sre
+
+production:
+  clients:
+    default:
+      hosts:
+        - mongodb-sre:27017
+      database: fiverr_sre
+    cluster1:
+      hosts:
+        - mongodb-sre:27017
+      database: fiverr_sre
